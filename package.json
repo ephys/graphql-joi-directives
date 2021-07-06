@@ -1,0 +1,47 @@
+{
+  "name": "@ephys/graphql-joi-directives",
+  "version": "1.0.0",
+  "description": "Adds Joi-powered constraint directive for GraphQL",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "eslint src && npm run jest",
+    "build": "tsc",
+    "prepublishOnly": "npm test && npm run build",
+    "jest": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ephys/graphql-joi-directives.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "Joi",
+    "Constraint",
+    "validation"
+  ],
+  "author": "Guylian Cox <hello@guylian.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ephys/graphql-joi-directives/issues"
+  },
+  "homepage": "https://github.com/ephys/graphql-joi-directives#readme",
+  "dependencies": {
+    "graphql": "^15.5.1",
+    "graphql-tools": "^7.0.5",
+    "lodash": "^4.17.21",
+    "joi": "^17.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@foobarhq/eslint-config": "^10.2.0",
+    "@foobarhq/eslint-config-typescript": "^10.2.0",
+    "@types/jest": "^26.0.23",
+    "apollo-server": "^2.25.2",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.29.0",
+    "jest": "^27.0.6",
+    "typescript": "^4.3.4"
+  }
+}
