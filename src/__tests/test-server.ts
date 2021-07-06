@@ -5,6 +5,7 @@ export function getTestServer(opts: Parameters<typeof makeExecutableSchema>[0]) 
   const schema = makeExecutableSchema({
     ...opts,
     typeDefs: [...toArray(opts.typeDefs), ...joiContraintDirectivesTypedefs],
+    // @ts-expect-error
     schemaDirectives: {
       ...opts.schemaDirectives,
       ...joiConstraintDirectives,
