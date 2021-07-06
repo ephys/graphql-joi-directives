@@ -5,7 +5,7 @@ import { buildJoiStrDirective, buildJoiStrDirectiveTypedef } from './str';
 
 export {
   buildJoiStrDirective, buildJoiIntDirective, buildJoiFloatDirective, buildJoiListDirective,
-  buildJoiStrDirectiveTypedef, buildJoiIntDirectiveTypedef, buildJoiFloatDirectiveTypedef, buildJoiListDirectiveTypedef
+  buildJoiStrDirectiveTypedef, buildJoiIntDirectiveTypedef, buildJoiFloatDirectiveTypedef, buildJoiListDirectiveTypedef,
 };
 
 export const joiConstraintDirectives = {
