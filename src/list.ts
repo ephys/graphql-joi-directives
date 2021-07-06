@@ -53,8 +53,9 @@ export function buildJoiListDirective(directiveName: string): SchemaDirectiveVis
         const fieldArgs = resolverArgs[1];
 
         const theList = fieldArgs[arg.name];
-
-        runJoi(joiSchema, theList);
+        if (theList != null) {
+          runJoi(joiSchema, theList);
+        }
 
         return resolve.apply(this, resolverArgs);
       };

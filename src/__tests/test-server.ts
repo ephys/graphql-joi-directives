@@ -1,5 +1,5 @@
 import { ApolloServer, makeExecutableSchema } from 'apollo-server';
-import { joiConstraintDirectives, joiContraintDirectivesTypedefs } from '../index';
+import { joiConstraintDirectives, joiContraintDirectivesTypedefs } from '..';
 
 export function getTestServer(opts: Parameters<typeof makeExecutableSchema>[0]) {
   const schema = makeExecutableSchema({
@@ -7,7 +7,7 @@ export function getTestServer(opts: Parameters<typeof makeExecutableSchema>[0]) 
     typeDefs: [...toArray(opts.typeDefs), ...joiContraintDirectivesTypedefs],
     schemaDirectives: {
       ...opts.schemaDirectives,
-      ...joiConstraintDirectives
+      ...joiConstraintDirectives,
     },
   });
 

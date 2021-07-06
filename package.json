@@ -4,7 +4,7 @@
   "description": "Adds Joi-powered constraint directive for GraphQL",
   "main": "lib/index.js",
   "scripts": {
-    "test": "eslint src && npm run jest",
+    "test": "eslint src/**/* && npm run jest",
     "build": "tsc",
     "prepublishOnly": "npm test && npm run build",
     "jest": "jest"
