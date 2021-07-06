@@ -2,7 +2,7 @@
 
 Add constraint validation to your GraphQL Inputs using [Joi](https://www.npmjs.com/package/joi)
 
-# Install
+## Install
 
 Add the package using [`npm i @ephys/graphql-joi-directives`](https://www.npmjs.com/package/@ephys/graphql-joi-directives)
 
@@ -29,13 +29,13 @@ const server = new ApolloServer({ schema });
 // ...
 ```
 
-# The directives
+## The directives
 
 By default, the following directives are exposed.
 
 They can be used on **fields in inputs** & on **arguments definitions**
 
-## Strings: @str
+### Strings: @str
 
 Can be used on the `String` & `[String]` types
 
@@ -69,7 +69,7 @@ enum JoiDirectiveCaseEnum {
 }
 ```
 
-## Ints: @int
+### Ints: @int
 
 Can be used on the `Int` & `[Int]` types
 
@@ -80,7 +80,7 @@ directive @int(
 ) on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 ```
 
-## Floats: @float
+### Floats: @float
 
 Can be used on the `Float` & `[Float]` types
 
@@ -101,7 +101,7 @@ directive @float(
 ) on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 ```
 
-## Lists: @list
+### Lists: @list
 
 Can be used on any list type
 
