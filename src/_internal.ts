@@ -8,15 +8,36 @@ import {
 import { SchemaDirectiveVisitor, SchemaDirectiveVisitorClass } from 'graphql-tools';
 import type { Schema as JoiSchema } from 'joi';
 
+function matchValidTypeName(val: string): boolean {
+  return /^[_a-zA-Z][_a-zA-Z0-9]*$/.test(val);
+}
+
+const substitutionMap = new Map<string, number>();
+let substitutionI = 0;
+
 function stringifyArgs(args) {
   return Object.entries(args).map(val => {
     if (typeof val[1] === 'boolean') {
       return val[1] ? val[0] : null;
     }
 
+    // this is a bit brittle but it replaces generated names that would not match a valid GraphQL identifier with "sub_{number}"
+    // currently it's ok because the only directive that accepts strings is @str(pattern: "")
+    // and pattern must always start with /
+    // if other directives start accepting strings, this will become a problem.
+    // alternatives:
+    //  - hash all resulting inputs strings (md4) & ensure they're not colliding (append a number if they're colliding)
+    if (typeof val[1] === 'string' && !matchValidTypeName(val[1])) {
+      if (!substitutionMap.has(val[1])) {
+        substitutionMap.set(val[1], substitutionI++);
+      }
+
+      return `${val[0]}_sub_${substitutionMap.get(val[1])}`;
+    }
+
     return val.join('_');
   }).filter(val => val != null)
-    .join('_');
+    .join('__');
 }
 
 export abstract class JoiConstrainedScalar extends GraphQLScalarType {

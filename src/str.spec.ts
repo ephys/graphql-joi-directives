@@ -12,7 +12,7 @@ describe('@str', () => {
           min1: String @str(min: 1)
           max10: String @str(max: 10)
           length5: String @str(length: 5)
-          #alphanum: String @str(pattern: "/[a-zA-Z0-9]+/i")
+          alphanum: String @str(pattern: "/[a-zA-Z0-9]+/i")
           creditCard: String @str(creditCard: true)
           isoDate: String @str(isoDate: true)
           isoDuration: String @str(isoDuration: true)
@@ -121,6 +121,17 @@ describe('@str', () => {
 
       expect(result.errors).toHaveLength(1);
       expect(result.errors[0].message).toEqual('"length5" length must be 5 characters long');
+    });
+
+    it('supports "alphanum"', async () => {
+      const result = await server.executeOperation({
+        query: gql`query {
+          testArgument(alphanum: "%%")
+        }`,
+      });
+
+      expect(result.errors).toHaveLength(1);
+      expect(result.errors[0].message).toEqual('"alphanum" with value "%%" fails to match the required pattern: /[a-zA-Z0-9]+/i');
     });
 
     it('supports "creditCard"', async () => {
