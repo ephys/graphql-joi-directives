@@ -64,6 +64,14 @@ class JoiConstrainedString extends JoiConstrainedScalar {
           break;
         }
 
+        case 'uuidV4': {
+          if (argVal) {
+            schema = schema.uuid({ version: 'uuidv4' });
+          }
+
+          break;
+        }
+
         default:
           throw new Error(`Unsupported argument ${argKey}.`);
       }
@@ -125,7 +133,7 @@ export function buildJoiStrDirectiveTypedef(directiveName: string) {
       isoDuration: Boolean,
 
       # email: EmailInput
-      # uuid: UuidInput
+      uuidV4: Boolean
     ) on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 
     enum JoiDirectiveCaseEnum {

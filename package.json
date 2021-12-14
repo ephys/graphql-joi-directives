@@ -1,6 +1,6 @@
 {
   "name": "@ephys/graphql-joi-directives",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Adds Joi-powered constraint directive for GraphQL",
   "main": "lib/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "Constraint",
     "validation"
   ],
-  "author": "Guylian Cox <hello@guylian.me>",
+  "author": "Zoé Cox <zoe@ephys.dev>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ephys/graphql-joi-directives/issues"

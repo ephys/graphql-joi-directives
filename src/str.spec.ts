@@ -16,6 +16,7 @@ describe('@str', () => {
           creditCard: String @str(creditCard: true)
           isoDate: String @str(isoDate: true)
           isoDuration: String @str(isoDuration: true)
+          uuidV4: String @str(uuidV4: true)
         ): Boolean
         testDefaults(val: String @str): String
         testTrim(val: String @str(trim: true)): String
@@ -165,6 +166,24 @@ describe('@str', () => {
 
       expect(result.errors).toHaveLength(1);
       expect(result.errors[0].message).toEqual('"isoDuration" must be a valid ISO 8601 duration');
+    });
+
+    it('supports "uuidV4"', async () => {
+      const successResult = await server.executeOperation({
+        query: gql`query {
+          testArgument(uuidV4: "ed7c78e5-e229-4d0b-a70c-9e19482b5a70")
+        }`,
+      });
+
+      expect(successResult.errors).toBeUndefined();
+
+      const errorResult = await server.executeOperation({
+        query: gql`query {
+          testArgument(uuidV4: "test")
+        }`,
+      });
+
+      expect(errorResult.errors[0].message).toEqual('"uuidV4" must be a valid GUID');
     });
 
     it('supports "case: UPPER"', async () => {
