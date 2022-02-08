@@ -15,7 +15,7 @@ import {
   ValueNode,
 } from 'graphql';
 import { SchemaDirectiveVisitor, SchemaDirectiveVisitorClass } from 'graphql-tools';
-import * as Joi from 'joi';
+import Joi from 'joi';
 import get from 'lodash/get';
 
 export function buildJoiListDirective(directiveName: string): SchemaDirectiveVisitorClass {

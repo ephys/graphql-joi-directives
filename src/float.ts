@@ -1,6 +1,6 @@
 import { GraphQLFloat } from 'graphql';
-import { SchemaDirectiveVisitorClass, parseGraphQLSDL } from 'graphql-tools';
-import * as Joi from 'joi';
+import { SchemaDirectiveVisitorClass } from 'graphql-tools';
+import Joi from 'joi';
 import { buildJoiDirective, JoiConstrainedScalar } from './_internal';
 
 class JoiConstrainedFloat extends JoiConstrainedScalar {

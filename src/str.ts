@@ -1,6 +1,6 @@
 import { GraphQLString } from 'graphql';
 import { SchemaDirectiveVisitorClass } from 'graphql-tools';
-import * as Joi from 'joi';
+import Joi from 'joi';
 import { buildJoiDirective, JoiConstrainedScalar } from './_internal';
 
 class JoiConstrainedString extends JoiConstrainedScalar {
